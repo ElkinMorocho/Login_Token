@@ -6,6 +6,8 @@ import { AboutComponent } from './Components/about/about.component';
 import { HeroesComponent } from './Components/heroes/heroes.component';
 import { HeroeComponent } from './Components/heroe/heroe.component';
 import { SearchComponent } from './Components/search/search.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegistroComponent } from './Components/registro/registro.component';
 
 
 //Importar Servicios
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path: 'heroes', component: HeroesComponent},
   {path: 'heroe/:id', component: HeroeComponent},
   {path: 'search/:dato', component: SearchComponent},
+  {path:'login', component:LoginComponent },
+  {path:'registro', component:RegistroComponent},
   {path: '**', pathMatch: 'full', redirectTo:'home'}
 
 ];

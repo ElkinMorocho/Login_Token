@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { UsuarioModel } from '../models/usuario/usuario.module';
 @Injectable({
   providedIn: 'root'
 })
@@ -60,7 +61,7 @@ export class HeroesService {
   getHeroes (){
     return this.heroes;
   }
-  constructor() { 
+  constructor(private http : HttpClient) { 
     console.log("Servicio listo para usar...");
   }
   getHeroe(idx:number):Heroe {
@@ -79,6 +80,34 @@ export class HeroesService {
       }
     }
     return heroesArr;
+  }
+
+  private url= 'https://identitytoolkit.googleapis.com/v1'
+  private apiKey = 'AIzaSyAQ1lPCLMgGfBfl-ZF8PGdqJjPsHRUsDLw';
+  
+  
+
+  logout(){
+
+  }
+
+  login(usuario : UsuarioModel){
+    const authData = {
+      ...usuario,
+    returnSecureToken:true}
+  
+      return this.http.post(
+      `${this.url}/accounts:signInWithPassword?key=${this.apiKey}`, authData);
+      
+  }
+
+  nuevoUsuario(usuario : UsuarioModel){
+    const authData = {
+    ...usuario,
+  returnSecureToken:true}
+
+    return this.http.post(
+    `${this.url}/accounts:signUp?key=${this.apiKey}`, authData);
   }
 }
 

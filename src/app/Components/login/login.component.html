@@ -1,0 +1,49 @@
+<div class="login-container">
+    <div class="login-wrapper">
+      <h2 class="login-title">Login</h2>
+      <form (ngSubmit)="login(f)" #f="ngForm" class="login-form">
+        <div class="form-group">
+          <label for="username" class="form-label">Username</label>
+          <input
+            class="form-control"
+            type="text"
+            name="username"
+            required
+            minlength="2"
+            placeholder="Ingresa tu usuario"
+            [(ngModel)]="usuario.nombre"
+          />
+          <div class="form-error" *ngIf="f.submitted && f.controls['username'].errors">
+            El usuario es obligatorio
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="pass" class="form-label">Contraseña</label>
+          <input
+            class="form-control"
+            type="password"
+            name="pass"
+            required
+            minlength="8"
+            placeholder="Ingresa tu contraseña"
+            [(ngModel)]="usuario.password"
+          />
+          <div class="form-error" *ngIf="f.submitted && f.controls['pass'].errors">
+            La contraseña debe tener al menos 8 caracteres
+          </div>
+        </div>
+  
+        <div class="remember-me">
+          <input class="form-checkbox" id="ckb1" type="checkbox" name="remember-me" />
+          <label class="checkbox-label" for="ckb1">Recordar mi usuario</label>
+        </div>
+  
+        <div class="login-actions">
+          <button class="login-button" type="submit">Ingresar</button>
+          <a routerLink="/registro" class="register-link">¿No tienes cuenta?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
